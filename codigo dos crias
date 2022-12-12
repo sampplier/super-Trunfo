@@ -71,8 +71,8 @@ while rodadas < 5:
     rodadas += 1
     print("O número da rodada é:", rodadas)
     if P1 > P2:
-        print("O jogador 1 venceu!!!")
+        print(nomeP1, "venceu!!!")
     if P1 < P2:
-        print("O jogador 2 venceu!!!")
+        print(nomeP2, "venceu!!!")
     if P1 == P2:
         print("Houve empate!!!")
