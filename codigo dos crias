@@ -21,9 +21,13 @@ while rodadas < 5:
         for i in range(0, 4):
             #escolhe cartas aleatórias
             P1cards.append(random.choice(cartas))
-            #remove a carta sorteada pra evitar repetição
+             #remove a carta sorteada pra evitar repetição
+            del cartas[cartas.index(P1cards[i])]
+            #escolhe cartas aleatórias
             P2cards.append(random.choice(cartas))
-            #pergunta o valor a ser comparado, na carta de cima
+            #remove a carta sorteada pra evitar repetição
+            del cartas[cartas.index(P2cards[i])]
+    #pergunta o valor a ser comparado, na carta de cima
     print("Olá", nomeP1)
     time.sleep(delay)
     escolhaP1 = P1cards[0][int(input("Qual atributo você quer disputar? 1 = Velocidade, 2 = Inteligência, 3 = Força "))]
@@ -34,8 +38,9 @@ while rodadas < 5:
     time.sleep(2)
     print(P1cards[0], "VS", P2cards[0])
     time.sleep(2)
+    #compara as escolhas
     if escolhaP1 > escolhaP2:
-        print(nomeP1, "venceu essa rodada!!!")
+        print(nomeP1, "venceu essa rodada ᕙ(⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)ᕗ !!!")
         del P1cards[0]
         P1cards.append(P2cards[0])
         del P2cards[0]
@@ -44,7 +49,7 @@ while rodadas < 5:
         #append cartas ao jogador vencedor
         #subtrai a diferença do jogador que perdeu
     elif escolhaP1 < escolhaP2:
-        print(nomeP2, "venceu essa rodada!!!")
+        print(nomeP2, "venceu essa rodada ᕙ(⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)ᕗ !!!")
         del P2cards[0]
         P2cards.append(P1cards[0])
         del P1cards[0]
@@ -53,8 +58,8 @@ while rodadas < 5:
         #append cartas ao jogador vencedor
         #subtrai a diferença do jogador que perdeu
     elif escolhaP1 == escolhaP2:
-        print("O resultado é um empate!!!")
-        #descarta as duas e dá uma nova pra cada
+        print("O resultado é um empate ＼⁠(⁠°⁠o⁠°⁠)⁠／!!!")
+        #descarta as duas e dá uma nova pra cada, na primeira posição
         del P1cards[0]
         del P2cards[0]
         P1cards.insert(0, random.choice(cartas))
@@ -62,10 +67,13 @@ while rodadas < 5:
         #rodada anulada
         rodadas -= 1
     rodadas += 1
-    print("O número da rodada é:", rodadas)
-    if P1 > P2:
-        print(nomeP1, "venceu!!!")
-    if P1 < P2:
-        print(nomeP2, "venceu!!!")
-    if P1 == P2:
-        print("Houve empate!!!")
+    if rodadas<5:
+        print("O número da rodada é:", rodadas)
+#comparação final de pontos
+if P1 > P2:
+    print(nomeP1, "venceu o jogo!!!")
+if P1 < P2:
+    print(nomeP2, "venceu o jogo!!!")
+if P1 == P2:
+    print("Houve empate!!!")
+print("Fim de jogo!!!!")
