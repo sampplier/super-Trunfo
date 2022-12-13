@@ -26,7 +26,7 @@ P2cards = []
 rodadas = 0
 while rodadas < 5:
     #apenas na primera rodada pra não ter mais de quatro cartas sorteadas
-    if rodadas == 0:
+    if rodadas <=0:
         for i in range(0, 4):
             #escolhe cartas aleatórias
             P1cards.append(random.choice(cartas))
@@ -48,7 +48,11 @@ while rodadas < 5:
     #limpa o terminal
     os.system('cls')
     time.sleep(2)
-    print(P1cards[0], "VS", P2cards[0])
+    if rodadas<4:
+        print("O número da rodada é:", rodadas)
+    if rodadas==4:
+        print("Rodada final!!")
+    print(P1cards[0][0], escolhaP1, "VS", P2cards[0][0], escolhaP2)
     time.sleep(2)
     #compara as escolhas
     if escolhaP1 > escolhaP2:
@@ -84,8 +88,7 @@ while rodadas < 5:
         P2cards.insert(0, random.choice(cartas))
         #rodada anulada
         rodadas -= 1
-    if rodadas<5:
-        print("O número da rodada é:", rodadas)
+    
     time.sleep(5)
     os.system('cls')
     rodadas += 1
